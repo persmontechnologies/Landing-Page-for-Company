@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CloudFlow - Save 10+ hours per week on manual tasks. Streamline your workflow with our powerful productivity platform.">
+    <meta name="keywords" content="productivity, workflow automation, project management, task management, saas">
+    <title>CloudFlow - Streamline Your Workflow, Save 10+ Hours Weekly</title>
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Analytics placeholders -->
+    <!-- Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script> -->
+    <!-- Facebook Pixel -->
+    <!-- <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', 'PIXEL_ID');fbq('track', 'PageView');</script> -->
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #7c3aed;
+            --accent-color: #06b6d4;
+            --success-color: #059669;
+            --warning-color: #d97706;
+            --error-color: #dc2626;
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+            --text-light: #9ca3af;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-dark: #111827;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            --gradient-accent: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        .h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.025em;
+        }
+
+        .h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.025em;
+        }
+
+        .h3 {
+            font-size: 1.875rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .text-lg {
+            font-size: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .text-base {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .text-sm {
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--gradient-primary);
+            border-radius: 6px;
+            margin-right: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-lg {
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+        }
+
+        .btn-xl {
+            padding: 1.25rem 2.5rem;
+            font-size: 1.25rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-title {
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .trust-indicators {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .trust-text {
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .trust-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            opacity: 0.7;
+        }
+
+        .trust-logo {
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1.5rem;
+            border-radius: var(--border-radius);
+            color: white;
+            font-weight: 500;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Problem/Solution Section */
+        .problem-solution {
+            background: var(--bg-secondary);
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .comparison-item {
+            text-align: center;
+            padding: 2rem;
+            border-radius: var(--border-radius-lg);
+        }
+
+        .problem {
+            background: #fef2f2;
+            border: 2px solid #fecaca;
+        }
+
+        .solution {
+            background: #f0fdf4;
+            border: 2px solid #bbf7d0;
+        }
+
+        .comparison-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .problem .comparison-icon {
+            background: #fee2e2;
+            color: var(--error-color);
+        }
+
+        .solution .comparison-icon {
+            background: #dcfce7;
+            color: var(--success-color);
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-title {
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-benefit {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--success-color);
+            font-weight: 500;
+            color: var(--success-color);
+        }
+
+        /* Social Proof Section */
+        .social-proof {
+            background: var(--bg-secondary);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+
+        .testimonial-quote {
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.25rem;
+        }
+
+        .author-company {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            padding-top: 4rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Pricing Section */
+        .pricing-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0 4rem;
+            gap: 1rem;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: var(--border-color);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .toggle-switch.active {
+            background: var(--primary-color);
+        }
+
+        .toggle-knob {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .toggle-switch.active .toggle-knob {
+            transform: translateX(30px);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .pricing-card.popular {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-period {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .plan-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .guarantee-badge {
+            display: inline-flex;
+            align-items: center;
+            background: var(--bg-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: var(--bg-secondary);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem;
+            border: none;
+            background: none;
+            text-align: left;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            background: var(--bg-secondary);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        .faq-icon {
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            background: var(--bg-dark);
+            color: white;
+            text-align: center;
+        }
+
+        .final-cta .section-title {
+            color: white;
+        }
+
+        .final-cta .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .cta-features {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .cta-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta-feature .check-icon {
+            color: var(--success-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-dark);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 3rem 0 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .h1 {
+                font-size: 2.5rem;
+            }
+
+            .h2 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .comparison {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.popular {
+                transform: none;
+            }
+
+            .trust-logos {
+                gap: 1.5rem;
+            }
+
+            .cta-features {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.125rem;
+            }
+
+            .btn-xl {
+                padding: 1rem 1.5rem;
+                font-size: 1.125rem;
+            }
+
+            .feature-card,
+            .testimonial-card,
+            .pricing-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+        .mb-1 { margin-bottom: 0.25rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-3 { margin-bottom: 0.75rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mt-4 { margin-top: 1rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">CF</div>
+                CloudFlow
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#cta" class="btn btn-primary">Start Free Trial</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content fade-in-up">
+                <div class="hero-badge">
+                    <span>🎉 Over 50,000 teams already saving time</span>
+                </div>
+                <h1 class="hero-title h1">Save 10+ Hours Per Week on Manual Tasks</h1>
+                <p class="hero-subtitle">CloudFlow automates your repetitive workflows, streamlines team collaboration, and eliminates the chaos of manual project management. Join thousands of productive teams.</p>
+                <div class="hero-cta">
+                    <a href="#cta" class="btn btn-primary btn-xl">Start Free Trial - No Credit Card</a>
+                    <a href="#demo" class="btn btn-secondary btn-xl">Watch Demo</a>
+                </div>
+                <div class="trust-indicators">
+                    <p class="trust-text">Trusted by teams at leading companies</p>
+                    <div class="trust-logos">
+                        <div class="trust-logo">TechCorp</div>
+                        <div class="trust-logo">InnovateLabs</div>
+                        <div class="trust-logo">GrowthCo</div>
+                        <div class="trust-logo">ScaleUp Inc</div>
+                        <div class="trust-logo">FutureTech</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem/Solution Section -->
+    <section class="section problem-solution" id="problem">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title h2">Stop Wasting Time on Tasks That Don't Move the Needle</h2>
+                <p class="section-subtitle text-lg">Every day, your team loses precious hours to manual, repetitive tasks that could be automated. Meanwhile, your competitors are moving faster.</p>
+            </div>
+            <div class="comparison">
+                <div class="comparison-item problem">
+                    <div class="comparison-icon">😰</div>
+                    <h3 class="h3 mb-3">Without CloudFlow</h3>
+                    <ul style="text-align: left; color: var(--text-secondary);">
+                        <li>Spending 2-3 hours daily on status updates</li>
+                        <li>Missing deadlines due to poor visibility</li>
+                        <li>Team members duplicating work</li>
+                        <li>Losing track of project progress</li>
+                        <li>Manual reporting eating up your week</li>
+                        <li>Constant context switching and interruptions</li>
+                    </ul>
+                </div>
+                <div class="comparison-item solution">
+                    <div class="comparison-icon">🚀</div>
+                    <h3 class="h3 mb-3">With CloudFlow</h3>
+                    <ul style="text-align: left; color: var(--text-secondary);">
+                        <li>Automated status updates save 10+ hours/week</li>
+                        <li>Real-time visibility prevents bottlenecks</li>
+                        <li>Smart task distribution eliminates duplication</li>
+                        <li>AI-powered progress tracking</li>
+                        <li>One-click reports in seconds</li>
+                        <li>Focus time increased by 60%</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title h2">Everything You Need to 10x Your Team's Productivity</h2>
+                <p class="section-subtitle text-lg">Stop juggling multiple tools. CloudFlow brings everything together in one powerful platform designed for modern teams.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title h3">Smart Automation Engine</h3>
+                    <p class="feature-description">Automatically route tasks, send updates, and trigger workflows based on your team's patterns. No more manual handoffs or forgotten follow-ups.</p>
+                    <div class="feature-benefit">Save 12+ hours weekly on routine tasks</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👁️</div>
+                    <h3 class="feature-title h3">Real-Time Project Visibility</h3>
+                    <p class="feature-description">See exactly where every project stands with live dashboards, automated progress tracking, and predictive analytics that warn you before issues arise.</p>
+                    <div class="feature-benefit">Reduce project delays by 75%</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3 class="feature-title h3">Intelligent Team Collaboration</h3>
+                    <p class="feature-description">AI-powered task assignment ensures the right work goes to the right person at the right time. Eliminate bottlenecks and balance workloads automatically.</p>
+                    <div class="feature-benefit">Increase team efficiency by 85%</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title h3">One-Click Reporting</h3>
+                    <p class="feature-description">Generate beautiful, comprehensive reports instantly. From executive summaries to detailed analytics, get the insights you need without the manual work.</p>
+                    <div class="feature-benefit">Cut reporting time from hours to seconds</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔗</div>
+                    <h3 class="feature-title h3">Universal Integrations</h3>
+                    <p class="feature-description">Connect with 500+ tools your team already uses. From Slack to Salesforce, everything works together seamlessly without switching contexts.</p>
+                    <div class="feature-benefit">Reduce app switching by 90%</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3 class="feature-title h3">Enterprise-Grade Security</h3>
+                    <p class="feature-description">Bank-level encryption, SOC 2 compliance, and advanced access controls keep your data safe while maintaining team productivity.</p>
+                    <div class="feature-benefit">100% uptime SLA with enterprise support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="section social-proof" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title h2">Join 50,000+ Teams Already Saving Time</h2>
+                <p class="section-subtitle text-lg">See how CloudFlow transforms productivity for teams just like yours</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"CloudFlow saved us 15 hours per week on project management alone. Our team can finally focus on what actually matters - building great products instead of managing spreadsheets."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SJ</div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p class="author-company">VP of Engineering, TechCorp</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"We increased our project delivery speed by 60% in just 3 months. The ROI was immediate - CloudFlow paid for itself in the first week."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div class="author-info">
+                            <h4>Mike Rodriguez</h4>
+                            <p class="author-company">Operations Director, GrowthCo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The automation features are incredible. Tasks that used to take our team 3 hours now happen automatically in the background. It's like having an extra team member."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AL</div>
+                        <div class="author-info">
+                            <h4>Amanda Liu</h4>
+                            <p class="author-company">Project Manager, InnovateLabs</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Finally, a tool that actually delivers on its promises. Our client satisfaction increased 40% because we can deliver faster and more reliably."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DK</div>
+                        <div class="author-info">
+                            <h4>David Kim</h4>
+                            <p class="author-company">Agency Owner, ScaleUp Inc</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"CloudFlow transformed our chaotic workflow into a well-oiled machine. We've eliminated 90% of our manual reporting and can focus on strategic work."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RB</div>
+                        <div class="author-info">
+                            <h4>Rachel Brown</h4>
+                            <p class="author-company">COO, FutureTech</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The best investment we've made for our team's productivity. CloudFlow eliminated the guesswork and gave us complete visibility into our operations."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JS</div>
+                        <div class="author-info">
+                            <h4>James Smith</h4>
+                            <p class="author-company">Founder, StartupNext</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">50,000+</div>
+                    <div class="stat-label">Teams Using CloudFlow</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Hours Saved Weekly</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">75%</div>
+                    <div class="stat-label">Fewer Missed Deadlines</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Uptime Guarantee</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title h2">Simple, Transparent Pricing That Scales With You</h2>
+                <p class="section-subtitle text-lg">Start free, upgrade when you're ready. No hidden fees, no surprises.</p>
+            </div>
+            <div class="pricing-toggle">
+                <span>Monthly</span>
+                <div class="toggle-switch" id="pricingToggle">
+                    <div class="toggle-knob"></div>
+                </div>
+                <span>Annual <span style="color: var(--success-color); font-weight: 600;">(Save 20%)</span></span>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="plan-name">Starter</div>
+                    <div class="plan-price">$<span id="starterPrice">29</span></div>
+                    <div class="plan-period">per user/month</div>
+                    <ul class="plan-features">
+                        <li><span class="check-icon">✓</span> Up to 10 projects</li>
+                        <li><span class="check-icon">✓</span> Basic automation</li>
+                        <li><span class="check-icon">✓</span> Team collaboration</li>
+                        <li><span class="check-icon">✓</span> Email support</li>
+                        <li><span class="check-icon">✓</span> Mobile apps</li>
+                        <li><span class="check-icon">✓</span> Basic integrations</li>
+                    </ul>
+                    <a href="#cta" class="btn btn-secondary btn-lg">Start Free Trial</a>
+                    <div class="guarantee-badge">30-day money-back guarantee</div>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="plan-name">Professional</div>
+                    <div class="plan-price">$<span id="proPrice">99</span></div>
+                    <div class="plan-period">per user/month</div>
+                    <ul class="plan-features">
+                        <li><span class="check-icon">✓</span> Unlimited projects</li>
+                        <li><span class="check-icon">✓</span> Advanced automation</li>
+                        <li><span class="check-icon">✓</span> AI-powered insights</li>
+                        <li><span class="check-icon">✓</span> Priority support</li>
+                        <li><span class="check-icon">✓</span> Custom workflows</li>
+                        <li><span class="check-icon">✓</span> Advanced integrations</li>
+                        <li><span class="check-icon">✓</span> Custom reporting</li>
+                        <li><span class="check-icon">✓</span> Team training</li>
+                    </ul>
+                    <a href="#cta" class="btn btn-primary btn-lg">Start Free Trial</a>
+                    <div class="guarantee-badge">30-day money-back guarantee</div>
+                </div>
+                <div class="pricing-card">
+                    <div class="plan-name">Enterprise</div>
+                    <div class="plan-price">$<span id="enterprisePrice">299</span></div>
+                    <div class="plan-period">per user/month</div>
+                    <ul class="plan-features">
+                        <li><span class="check-icon">✓</span> Everything in Professional</li>
+                        <li><span class="check-icon">✓</span> White-label options</li>
+                        <li><span class="check-icon">✓</span> Dedicated success manager</li>
+                        <li><span class="check-icon">✓</span> 24/7 phone support</li>
+                        <li><span class="check-icon">✓</span> Custom integrations</li>
+                        <li><span class="check-icon">✓</span> Advanced security</li>
+                        <li><span class="check-icon">✓</span> Compliance tools</li>
+                        <li><span class="check-icon">✓</span> Unlimited users</li>
+                    </ul>
+                    <a href="#cta" class="btn btn-secondary btn-lg">Contact Sales</a>
+                    <div class="guarantee-badge">Custom enterprise agreement</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title h2">Frequently Asked Questions</h2>
+                <p class="section-subtitle text-lg">Everything you need to know about CloudFlow</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How quickly can my team start saving time with CloudFlow?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        Most teams see immediate time savings within the first week. Our smart onboarding process analyzes your current workflows and automatically sets up the most impactful automations first. You'll typically save 3-5 hours in week one, growing to 10+ hours weekly within a month.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Do I need technical skills to set up CloudFlow?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        Not at all! CloudFlow is designed for business users, not developers. Our drag-and-drop workflow builder, pre-built templates, and AI assistant make setup incredibly simple. Plus, our customer success team provides free onboarding support to get you up and running quickly.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How does CloudFlow integrate with our existing tools?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        CloudFlow connects with over 500 popular business tools including Slack, Microsoft Teams, Google Workspace, Salesforce, HubSpot, Jira, and many more. Most integrations take just a few clicks to set up, and our API allows custom connections for enterprise needs.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What happens to our data if we decide to leave?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        You own your data, period. CloudFlow provides easy export tools to download all your data in standard formats (CSV, JSON, PDF) at any time. We also offer free data migration support if you decide to switch platforms, though we're confident you'll love staying with us!
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is CloudFlow secure enough for sensitive business data?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        Absolutely. CloudFlow uses bank-level encryption, is SOC 2 Type II certified, and complies with GDPR, HIPAA, and other major security standards. We maintain 99.9% uptime with enterprise-grade infrastructure and undergo regular third-party security audits.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Can I try CloudFlow before committing to a paid plan?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        Yes! We offer a 14-day free trial with full access to all Professional features - no credit card required. You can also schedule a personalized demo with our team to see exactly how CloudFlow would work for your specific use case.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What kind of support do you provide?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        We provide comprehensive support including free onboarding, extensive documentation, video tutorials, and responsive customer support. Professional plans include priority support, while Enterprise customers get dedicated success managers and 24/7 phone support.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How do you calculate ROI for CloudFlow?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        Most customers see 300-500% ROI within 6 months. We calculate this based on time saved (typically 10+ hours per user weekly), reduced errors, faster project completion, and improved team productivity. Our ROI calculator can provide specific estimates based on your team size and hourly rates.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="section final-cta" id="cta">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title h2">Ready to Save 10+ Hours Per Week?</h2>
+                <p class="section-subtitle text-lg">Join 50,000+ productive teams who've eliminated manual work and accelerated their success with CloudFlow.</p>
+            </div>
+            <div class="cta-features">
+                <div class="cta-feature">
+                    <span class="check-icon">✓</span>
+                    <span>14-day free trial</span>
+                </div>
+                <div class="cta-feature">
+                    <span class="check-icon">✓</span>
+                    <span>No credit card required</span>
+                </div>
+                <div class="cta-feature">
+                    <span class="check-icon">✓</span>
+                    <span>Cancel anytime</span>
+                </div>
+                <div class="cta-feature">
+                    <span class="check-icon">✓</span>
+                    <span>30-day money-back guarantee</span>
+                </div>
+            </div>
+            <div class="hero-cta" style="margin-bottom: 2rem;">
+                <a href="https://app.cloudflow.com/signup" class="btn btn-primary btn-xl">Start Your Free Trial Now</a>
+                <a href="https://calendly.com/cloudflow/demo" class="btn btn-secondary btn-xl">Book a Demo</a>
+            </div>
+            <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">
+                Questions? Call us at (555) 123-4567 or email hello@cloudflow.com
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <a href="#features">Features</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#integrations">Integrations</a>
+                    <a href="#security">Security</a>
+                    <a href="#api">API Docs</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <a href="#about">About Us</a>
+                    <a href="#careers">Careers</a>
+                    <a href="#press">Press</a>
+                    <a href="#blog">Blog</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="#help">Help Center</a>
+                    <a href="#tutorials">Tutorials</a>
+                    <a href="#webinars">Webinars</a>
+                    <a href="#templates">Templates</a>
+                    <a href="#community">Community</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#cookies">Cookie Policy</a>
+                    <a href="#gdpr">GDPR</a>
+                    <a href="#compliance">Compliance</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CloudFlow. All rights reserved. Built to help teams achieve more.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                const answer = faqItem.querySelector('.faq-answer');
+                const isActive = faqItem.classList.contains('active');
+
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                    item.querySelector('.faq-answer').classList.remove('active');
+                });
+
+                // Toggle current item
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                    answer.classList.add('active');
+                }
+            });
+        });
+
+        // Pricing Toggle
+        const pricingToggle = document.getElementById('pricingToggle');
+        const starterPrice = document.getElementById('starterPrice');
+        const proPrice = document.getElementById('proPrice');
+        const enterprisePrice = document.getElementById('enterprisePrice');
+
+        const monthlyPrices = { starter: 29, pro: 99, enterprise: 299 };
+        const annualPrices = { starter: 23, pro: 79, enterprise: 239 }; // 20% discount
+
+        pricingToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            const isAnnual = this.classList.contains('active');
+            
+            if (isAnnual) {
+                starterPrice.textContent = annualPrices.starter;
+                proPrice.textContent = annualPrices.pro;
+                enterprisePrice.textContent = annualPrices.enterprise;
+            } else {
+                starterPrice.textContent = monthlyPrices.starter;
+                proPrice.textContent = monthlyPrices.pro;
+                enterprisePrice.textContent = monthlyPrices.enterprise;
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections and cards
+        document.querySelectorAll('.section, .feature-card, .testimonial-card, .pricing-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // CTA Button Click Tracking (placeholder for analytics)
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // Add your analytics tracking here
+                console.log('CTA clicked:', this.textContent);
+                
+                // Example: Google Analytics event
+                // gtag('event', 'click', {
+                //     event_category: 'CTA',
+                //     event_label: this.textContent
+                // });
+                
+                // Example: Facebook Pixel event
+                // fbq('track', 'Lead');
+            });
+        });
+
+        // Mobile menu toggle (basic implementation)
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('show');
+        });
+
+        // Form validation helper (if you add contact forms)
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Add loading states to buttons
+        function addLoadingState(button) {
+            const originalText = button.textContent;
+            button.textContent = 'Loading...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.disabled = false;
+            }, 2000);
+        }
+
+        // Add click handlers for demo buttons
+        document.querySelectorAll('a[href*="demo"]').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // You can add demo booking logic here
+                console.log('Demo requested');
+            });
+        });
+
+        // Performance optimization: Lazy load background images
+        const lazyBackgrounds = document.querySelectorAll('[data-bg]');
+        const backgroundObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.backgroundImage = `url(${entry.target.dataset.bg})`;
+                    backgroundObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        lazyBackgrounds.forEach(bg => backgroundObserver.observe(bg));
+    </script>
+</body>
+</html>
